@@ -3,17 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Cabo
+  - Faca
+  - Cepo
+  - Trancisao de Cena
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Faca
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Cepo
+  - Cabo
+  - Background
   - 
   - 
   - 
@@ -38,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2064992341
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
