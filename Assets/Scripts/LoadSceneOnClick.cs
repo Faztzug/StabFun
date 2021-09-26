@@ -5,16 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneOnClick : MonoBehaviour
 {
+    [SerializeField]
     private CrossfadeLoadEffect crossfade;
 
     private void Start()
     {
-        crossfade = FindObjectOfType<CrossfadeLoadEffect>();
+        
 
     }
 
     public void LoadScene(string sceneName)
     {
+        crossfade = FindObjectOfType<CrossfadeLoadEffect>();
         crossfade.ChamarCrossfade(sceneName, Vector2.zero);
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DontDestroy : MonoBehaviour
 {
-    void Start()
+    void Awake()
     {
         for (int i = 0; i < Object.FindObjectsOfType<DontDestroy>().Length; i++)
         {

@@ -8,6 +8,7 @@ TagManager:
   - Faca
   - Cepo
   - Trancisao de Cena
+  - GameOver
   layers:
   - Default
   - TransparentFX

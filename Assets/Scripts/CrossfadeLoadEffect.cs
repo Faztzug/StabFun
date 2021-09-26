@@ -7,7 +7,7 @@ public class CrossfadeLoadEffect : MonoBehaviour
 {
     
     
-    
+    [SerializeField]
     private Animator crossfadeTransition;
     [SerializeField] private float tempoDeCrossfade = 1f;
 

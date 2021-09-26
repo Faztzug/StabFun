@@ -8,11 +8,13 @@ public class RodaRodaGiraGira : MonoBehaviour
     private float speed;
     private Rigidbody2D rgbd2d;
     private Transform cepo;
+    private CriarFaca criarFaca;
 
     private void Start()
     {
         //rgbd2d = GetComponent<Rigidbody2D>();
         cepo = this.transform;
+        criarFaca = FindObjectOfType<CriarFaca>();
     }
 
     private void Update()
@@ -32,8 +34,9 @@ public class RodaRodaGiraGira : MonoBehaviour
             collision.gameObject.transform.SetParent(this.gameObject.transform);
             collision.rigidbody.velocity = Vector2.zero;
             collision.rigidbody.angularVelocity = 0;
+            collision.rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
             collision.gameObject.GetComponentInParent<Faca>().enabled = false;
-            
+            criarFaca.Spawn();
         }
     }
 
