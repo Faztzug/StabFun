@@ -103,10 +103,10 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 5
 --- !u!61 &1753560630838871025
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,7 +146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 18
-  recuo: 8
+  recuo: 30
+  presa: 0
+  hit: 0
 --- !u!1 &1753560630848080083
 GameObject:
   m_ObjectHideFlags: 0

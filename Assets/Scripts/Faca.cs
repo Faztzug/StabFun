@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Faca : MonoBehaviour
@@ -8,12 +6,25 @@ public class Faca : MonoBehaviour
     [SerializeField] private float recuo;
     private Rigidbody2D facaBody;
     private Rigidbody2D caboBody;
+    [HideInInspector] public bool presa = false;
+    [HideInInspector] public bool hit = false;
+    private bool repulse = false;
 
     private void Start()
     {
         facaBody = GetComponent<Rigidbody2D>();
         caboBody = GetComponentInChildren<Rigidbody2D>();
         FindObjectOfType<AcharFaca>().faca = this;
+    }
+
+    private void FixedUpdate()
+    {
+        if(hit == true && repulse == false)
+        {
+            facaBody.AddForce(Vector2.down * recuo, ForceMode2D.Impulse);
+            repulse = true;
+        }
+            
     }
 
     public void Jogar()
@@ -23,26 +34,29 @@ public class Faca : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Faca"))
+        if(presa == false)
         {
-            Debug.Log(collision.gameObject);
-
-            
-            if(transform.parent != null)
+            if (collision.gameObject.CompareTag("Faca"))
             {
-                GetComponentInChildren<BoxCollider2D>().enabled = false;
-                facaBody.constraints = RigidbodyConstraints2D.None;
-                facaBody.AddForce(Vector2.down * recuo, ForceMode2D.Impulse);
-                transform.parent = null;
-                
-            }
-            
+                hit = true;
+                Debug.Log(collision.gameObject);
 
-            foreach (GameOver og in Resources.FindObjectsOfTypeAll<GameOver>())
-            {
-                og.gameObject.SetActive(true);
+                    //facaBody.AddForce(Vector2.down * recuo, ForceMode2D.Impulse);
+                    GetComponentInChildren<BoxCollider2D>().enabled = false;
+                    facaBody.constraints = RigidbodyConstraints2D.None;
+                    //GetComponent<BoxCollider2D>().enabled = false;
+                    GetComponentInChildren<BoxCollider2D>().enabled = false;
+                    transform.parent = null;
+                if (transform.parent == null)
+                {
+                }
+
+                foreach (GameOver og in Resources.FindObjectsOfTypeAll<GameOver>())
+                {
+                    og.gameObject.SetActive(true);
+                }
             }
-            
         }
+        
     }
 }
