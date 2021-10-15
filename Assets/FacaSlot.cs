@@ -8,6 +8,11 @@ public class FacaSlot : MonoBehaviour
 
     private void Start()
     {
+        GerarIcone();
+    }
+
+    public void GerarIcone()
+    {
         Instantiate(icon, this.transform);
     }
 }

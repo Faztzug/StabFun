@@ -2115,10 +2115,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Faca Slot
       objectReference: {fileID: 0}
-    - target: {fileID: 8733132926446418803, guid: 3248d4893b00ca04385aa31cdfaa9817, type: 3}
-      propertyPath: icon
-      value: 
-      objectReference: {fileID: 568585177134964336, guid: fe9199e510e0bfa46ac88eb70af12da8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3248d4893b00ca04385aa31cdfaa9817, type: 3}
 --- !u!1001 &1970915392

@@ -28,7 +28,8 @@ public class ContadorFacas : MonoBehaviour
     {
         if(facasAtuais < facasTotal)
         {
-            transform.GetChild(facasAtuais).GetChild(0).gameObject.SetActive(false);
+            Destroy(transform.GetChild(facasAtuais).GetChild(0).gameObject);
+            //transform.GetChild(facasAtuais).GetChild(0).gameObject.SetActive(false);
             facasAtuais++;
             scorePoints++;
             scoreText.text = scoreString + scorePoints;
@@ -39,7 +40,7 @@ public class ContadorFacas : MonoBehaviour
             Debug.Log("Vitoria");
             Destroy(FindObjectOfType<RodaRodaGiraGira>().gameObject);
             criarCepo.Spawn();
-
+            GerarFacas();
         }
             
     }
@@ -48,9 +49,9 @@ public class ContadorFacas : MonoBehaviour
     {
         
 
-        foreach (Transform faca in GetComponentsInChildren<Transform>())
+        foreach (FacaSlot faca in FindObjectsOfType<FacaSlot>())
         {
-            faca.GetChild(0).gameObject.SetActive(true);
+            faca.GerarIcone();
         }
 
         facasTotal = transform.childCount;
