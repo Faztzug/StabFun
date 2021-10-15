@@ -9,6 +9,7 @@ TagManager:
   - Cepo
   - Trancisao de Cena
   - GameOver
+  - Score
   layers:
   - Default
   - TransparentFX

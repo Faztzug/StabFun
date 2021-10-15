@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8725182808952896196}
   - component: {fileID: 8725182808952896198}
   - component: {fileID: 8725182808952896193}
+  - component: {fileID: 906227768}
   m_Layer: 6
   m_Name: Cepo
   m_TagString: Untagged
@@ -112,4 +113,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b4eaf59c74e62d4e9706be021693e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 80
+  speed: 150
+--- !u!50 &906227768
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8725182808952896192}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.5
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 3
