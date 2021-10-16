@@ -10,6 +10,7 @@ TagManager:
   - Trancisao de Cena
   - GameOver
   - Score
+  - Stage
   layers:
   - Default
   - TransparentFX

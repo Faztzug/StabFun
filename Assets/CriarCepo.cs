@@ -14,18 +14,18 @@ public class CriarCepo : MonoBehaviour
         stopInput.gameObject.SetActive(false);
     }
 
-    public void Spawn()
+    public void Spawn(float espera)
     {
-        StartCoroutine(SpawnCepo());
+        StartCoroutine(SpawnCepo(espera));
         //if (FindObjectOfType<GameOver>() == null)
             
     }
 
-    public IEnumerator SpawnCepo()
+    public IEnumerator SpawnCepo(float espera)
     {
         stopInput.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(waitSeconds);
+        yield return new WaitForSeconds(espera);
 
         Instantiate(cepoGO);
         stopInput.gameObject.SetActive(false);
