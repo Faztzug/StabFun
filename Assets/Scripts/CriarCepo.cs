@@ -5,7 +5,7 @@ using UnityEngine;
 public class CriarCepo : MonoBehaviour
 {
     [SerializeField] private GameObject cepoGO;
-    [SerializeField] private float waitSeconds = 1;
+    //[SerializeField] private float waitSeconds = 1;
     private StopInput stopInput;
 
     private void Start()

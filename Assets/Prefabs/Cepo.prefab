@@ -115,7 +115,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   maxSpeed: 250
-  dragAccelaration: 13
+  accelaration: 15
+  increaseAccelaration: 0.5
+  maxAccelaration: 50
+  timeToChange: 1
+  sentido: 0
+  speedRange: {x: -100, y: 100}
+  maxSpeedRange: {x: 0, y: 500}
+  accelarationRange: {x: 1, y: 50}
+  increaseAccelarationRange: {x: 0, y: 1}
+  maxAccelarationRange: {x: 15, y: 80}
+  timeToChangeRange: {x: 0.5, y: 2.3}
 --- !u!50 &906227768
 Rigidbody2D:
   serializedVersion: 4
