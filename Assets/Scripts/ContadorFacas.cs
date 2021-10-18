@@ -21,6 +21,9 @@ public class ContadorFacas : MonoBehaviour
 
     [SerializeField] private float esperarSegundosAposVitoria = 1;
 
+    private FacaSlot[] facas;
+    [SerializeField] private Vector2Int removerFacasRange = new Vector2Int(0, 4);
+
     private void Start()
     {
         facasTotal = transform.childCount;
@@ -36,6 +39,8 @@ public class ContadorFacas : MonoBehaviour
         stageText.text = stageString + stagePoints;
 
         criarCepo = FindObjectOfType<CriarCepo>();
+
+        facas = transform.GetComponentsInChildren<FacaSlot>();
     }
     public void MenosUma()
     {
@@ -61,8 +66,17 @@ public class ContadorFacas : MonoBehaviour
 
             Destroy(FindObjectOfType<RodaRodaGiraGira>().gameObject);
 
-            StartCoroutine(GerarFacas());
             
+
+            foreach (FacaSlot faca in facas)
+            {
+                faca.gameObject.SetActive(false);
+            }
+
+            StartCoroutine(GerarFacas());
+
+            
+
         }
             
     }
@@ -73,13 +87,33 @@ public class ContadorFacas : MonoBehaviour
 
         yield return new WaitForSeconds(esperarSegundosAposVitoria);
 
-        foreach (FacaSlot faca in FindObjectsOfType<FacaSlot>())
+        foreach (FacaSlot faca in facas)
         {
+            faca.gameObject.SetActive(true);
             faca.GerarIcone();
         }
 
         facasTotal = transform.childCount;
 
         facasAtuais = 0;
+
+        MenosFacas(Random.Range(removerFacasRange.x, removerFacasRange.y));
+    }
+
+    public void MenosFacas(int quantidade)
+    {
+        if(facasAtuais < facasTotal)
+        {
+            for (int i = 0; i < quantidade; i++)
+            {
+                facas[facasAtuais].gameObject.SetActive(false);
+                //facasTotal--;
+                facasAtuais++;
+
+            }
+
+            Debug.Log("Quantidade de Facas Removidas: " + quantidade);
+        }
+        
     }
 }
