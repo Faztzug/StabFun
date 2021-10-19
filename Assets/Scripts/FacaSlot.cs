@@ -14,6 +14,7 @@ public class FacaSlot : MonoBehaviour
 
     public void GerarIcone()
     {
+        if(icon != null)
         icon.SetActive(true);
         //Instantiate(icon, this.transform);
     }

@@ -24,6 +24,10 @@ public class ContadorFacas : MonoBehaviour
     private FacaSlot[] facas;
     [SerializeField] private Vector2Int removerFacasRange = new Vector2Int(0, 4);
 
+    [SerializeField] private int pontosParaGanharVida = 100;
+    [SerializeField] private int acresentarPontosParaProximaVida = 100;
+    private Vidas vidasClass;
+
     private void Start()
     {
         facasTotal = transform.childCount;
@@ -41,6 +45,10 @@ public class ContadorFacas : MonoBehaviour
         criarCepo = FindObjectOfType<CriarCepo>();
 
         facas = transform.GetComponentsInChildren<FacaSlot>();
+
+        MenosFacas(Random.Range(removerFacasRange.x, removerFacasRange.y));
+
+        vidasClass = FindObjectOfType<Vidas>();
     }
     public void MenosUma()
     {
@@ -54,6 +62,8 @@ public class ContadorFacas : MonoBehaviour
             facasAtuais++;
             scorePoints++;
             scoreText.text = scoreString + scorePoints;
+
+            GanharVida();
         }
         
         if (facasAtuais > facasTotal - 1)
@@ -64,8 +74,10 @@ public class ContadorFacas : MonoBehaviour
             scorePoints += stagePoints;
             scoreText.text = scoreString + scorePoints;
 
-            Destroy(FindObjectOfType<RodaRodaGiraGira>().gameObject);
+            GanharVida();
 
+            //Destroy(FindObjectOfType<RodaRodaGiraGira>().gameObject);
+            FindObjectOfType<RodaRodaGiraGira>().DestruirCepo();
             
 
             foreach (FacaSlot faca in facas)
@@ -98,6 +110,15 @@ public class ContadorFacas : MonoBehaviour
         facasAtuais = 0;
 
         MenosFacas(Random.Range(removerFacasRange.x, removerFacasRange.y));
+    }
+
+    private void GanharVida()
+    {
+        if(scorePoints >= pontosParaGanharVida)
+        {
+            pontosParaGanharVida += acresentarPontosParaProximaVida + pontosParaGanharVida;
+            vidasClass.GanharVida();
+        }
     }
 
     public void MenosFacas(int quantidade)

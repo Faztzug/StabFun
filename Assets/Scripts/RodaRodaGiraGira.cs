@@ -126,4 +126,22 @@ public class RodaRodaGiraGira : MonoBehaviour
             }
         }
     }
+
+    public void DestruirCepo()
+    {
+        foreach (Faca faca in GetComponentsInChildren<Faca>())
+        {
+            faca.LibertarEDestruir();
+            
+        }
+
+
+        /*int childLenght = transform.childCount;
+        for (int i = 0; i <= childLenght; i++)
+        {
+            transform.GetChild(i).gameObject.transform.parent = null;
+        }*/
+
+        Destroy(this.gameObject);
+    }
 }
