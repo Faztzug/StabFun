@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Faca : MonoBehaviour
 {
-    [SerializeField] private float force;
-    [SerializeField] private float recuo;
+    [SerializeField] protected float force;
+    [SerializeField] protected float recuo;
     [HideInInspector] public Rigidbody2D facaBody;
-    private Rigidbody2D caboBody;
+    protected Rigidbody2D caboBody;
     [HideInInspector] public bool presa = false;
     [HideInInspector] public bool hit = false;
-    private bool repulse = false;
+    protected bool repulse = false;
 
     [HideInInspector]
     public BoxCollider2D facaBox;
@@ -16,24 +16,44 @@ public class Faca : MonoBehaviour
     [HideInInspector]
     public BoxCollider2D caboBox;
 
-    [SerializeField] private Vector2 destruirAposRange = new Vector2(3f, 8f);
-    [SerializeField] private Vector2 destruirTorqueRange = new Vector2(-1f, 1f);
-    [SerializeField] private float destruirApos;
-    [SerializeField] private float destruirTorque;
+    [SerializeField] protected Vector2 destruirAposRange = new Vector2(3f, 8f);
+    [SerializeField] protected Vector2 destruirTorqueRange = new Vector2(-1f, 1f);
+    [SerializeField] protected float destruirApos;
+    [SerializeField] protected float destruirTorque;
 
-    private void Start()
+    [HideInInspector] public bool dummyFaca = false;
+
+    protected void Start()
     {
         facaBody = GetComponent<Rigidbody2D>();
         caboBody = GetComponentInChildren<Rigidbody2D>();
-        FindObjectOfType<AcharFaca>().faca = this;
+        if(dummyFaca == false) FindObjectOfType<AcharFaca>().faca = this;
         facaBox = GetComponent<BoxCollider2D>();
         caboBox = transform.GetChild(0).gameObject.GetComponent<BoxCollider2D>();
 
         destruirApos = Random.Range(destruirAposRange.x, destruirAposRange.y);
         destruirTorque = Random.Range(destruirTorqueRange.x, destruirTorqueRange.y);
+
+        if (dummyFaca == true)
+        {
+            //facaBox.enabled = false;
+            if(transform.parent != null)
+            {
+                
+                    
+            }
+
+            facaBody.velocity = Vector2.zero;
+            facaBody.angularVelocity = 0;
+            facaBody.constraints = RigidbodyConstraints2D.FreezeAll;
+            //collision.rigidbody.mass = collision.rigidbody.mass * 10;
+            presa = true;
+            enabled = false;
+        }
+            
     }
 
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (hit == true && repulse == false)
         {
@@ -58,9 +78,9 @@ public class Faca : MonoBehaviour
         Destroy(this.gameObject, destruirApos);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
-        if (presa == false)
+        if (presa == false && dummyFaca == false)
         {
             if (collision.gameObject.CompareTag("Faca"))
             {
@@ -82,8 +102,11 @@ public class Faca : MonoBehaviour
                 {
                 }
 
+                Destroy(this.gameObject, 5f);
+
                 foreach (GameOver go in Resources.FindObjectsOfTypeAll<GameOver>())
                 {
+                    Debug.Log(gameObject.name + " Chamou GameOver");
                     go.ChamarGameOver();
                 }
             }

@@ -24,6 +24,16 @@ public class RodaRodaGiraGira : MonoBehaviour
     private CriarFaca criarFaca;
     private ContadorFacas contadorFacas;
 
+    [SerializeField] private GameObject fruta;
+    [SerializeField] private float frutaSpawnChance;
+    [SerializeField] private GameObject faca;
+    [SerializeField] private float facaSpawnChance;
+    [SerializeField] private int spawnSections = 12;
+    private float grausSpawn;
+    private float grauAtual = 0;
+    [SerializeField] private Vector2 frutaSpawnPosition;
+    [SerializeField] private Vector2 facaSpawnPosition;
+
     private void Start()
     {
         //rgbd2d = GetComponent<Rigidbody2D>();
@@ -35,7 +45,59 @@ public class RodaRodaGiraGira : MonoBehaviour
         RandomizeStats(true);
         StartCoroutine(CourotineRandomizeAgain());
 
+        grausSpawn = 360 / spawnSections;
+        SpawnObjects();
+        //StartCoroutine(SpawnTeste());
+
+        /*foreach (DummyFaca dFaca in GetComponentsInChildren<DummyFaca>())
+        {
+            dFaca.Jogar();
+        }*/
+
     }
+
+    
+
+    private void SpawnObjects()
+    {
+        for (int i = 0; i < spawnSections; i++)
+        {
+            float rng = Random.Range(1f, 100f);
+            transform.rotation = Quaternion.Euler(0, 0, grausSpawn * i);
+
+            if (frutaSpawnChance >= rng)
+            {
+                Instantiate(fruta, this.transform);
+                transform.GetChild(i).position = new Vector2(0, 0 + frutaSpawnPosition.y);
+                //transform.GetChild(i).Translate(frutaSpawnPosition);
+                transform.GetChild(i).rotation = Quaternion.Euler(0, 0, 180);
+                //transform.GetChild(i).
+                    //RotateAround(transform.GetChild(i).position, this.transform.position, grauAtual);
+            }
+            else
+            {
+                rng = Random.Range(1f, 100f);
+                if (facaSpawnChance >= rng)
+                {
+                    Instantiate(faca, this.transform);
+                    transform.GetChild(i).position = new Vector2(0, 0 + facaSpawnPosition.y);
+                    //transform.GetChild(i).Translate(frutaSpawnPosition);
+                    transform.GetChild(i).rotation = Quaternion.Euler(0, 0, 180);
+                    //transform.GetChild(i).GetComponent<Faca>().facaBox.enabled = false;
+                    contadorFacas.MenosFacas(1);
+                }
+            }
+
+            //cepo.Rotate(0, 0, grausSpawn);
+            
+            
+
+            //grauAtual += grausSpawn;
+
+        }
+    }
+
+
 
     private void Update()
     {
@@ -112,7 +174,8 @@ public class RodaRodaGiraGira : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Faca"))
         {
-            if (collision.gameObject.GetComponentInParent<Faca>().hit == false)
+            if (collision.gameObject.GetComponentInParent<Faca>().hit == false 
+                && collision.gameObject.GetComponentInParent<Faca>().dummyFaca == false)
             {
                 collision.gameObject.transform.SetParent(this.gameObject.transform);
                 collision.rigidbody.velocity = Vector2.zero;

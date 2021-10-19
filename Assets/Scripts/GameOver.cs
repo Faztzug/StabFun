@@ -8,6 +8,7 @@ public class GameOver : MonoBehaviour
     {
         vidasClass = FindObjectOfType<Vidas>();
         gameObject.SetActive(false);
+        gameObject.GetComponent<CanvasGroup>().alpha = 1;
     }
 
     private void OnEnable()

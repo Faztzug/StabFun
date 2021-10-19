@@ -60,8 +60,8 @@ public class ContadorFacas : MonoBehaviour
             //transform.GetChild(facasAtuais).GetChild(0).gameObject.SetActive(false);
 
             facasAtuais++;
-            scorePoints++;
-            scoreText.text = scoreString + scorePoints;
+            GanharPontos(1);
+            
 
             GanharVida();
         }
@@ -110,6 +110,12 @@ public class ContadorFacas : MonoBehaviour
         facasAtuais = 0;
 
         MenosFacas(Random.Range(removerFacasRange.x, removerFacasRange.y));
+    }
+
+    public void GanharPontos(int pontos)
+    {
+        scorePoints += pontos;
+        scoreText.text = scoreString + scorePoints;
     }
 
     private void GanharVida()

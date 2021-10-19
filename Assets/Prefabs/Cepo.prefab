@@ -126,6 +126,13 @@ MonoBehaviour:
   increaseAccelarationRange: {x: 0, y: 1}
   maxAccelarationRange: {x: 15, y: 80}
   timeToChangeRange: {x: 0.5, y: 2.3}
+  fruta: {fileID: 6249854273864881439, guid: 5cc078aa2fd353344a783c7bdd913a41, type: 3}
+  frutaSpawnChance: 50
+  faca: {fileID: 3641097030179040926, guid: eedfac0adae2bad4e82217f813b5849e, type: 3}
+  facaSpawnChance: 50
+  spawnSections: 6
+  frutaSpawnPosition: {x: 0, y: 3.25}
+  facaSpawnPosition: {x: 0, y: 2.76}
 --- !u!50 &906227768
 Rigidbody2D:
   serializedVersion: 4
