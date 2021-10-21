@@ -134,6 +134,8 @@ MonoBehaviour:
   spawnSections: 6
   frutaSpawnPosition: {x: 0, y: 3.4}
   facaSpawnPosition: {x: 0, y: 2.76}
+  sfx: {fileID: 0}
+  colorRange: {x: 0.5, y: 1}
 --- !u!50 &906227768
 Rigidbody2D:
   serializedVersion: 4

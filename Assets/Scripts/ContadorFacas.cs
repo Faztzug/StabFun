@@ -13,7 +13,8 @@ public class ContadorFacas : MonoBehaviour
     private string scoreString;
     private Text scoreText;
 
-    private int stagePoints;
+    [HideInInspector]
+    public int stagePoints;
     private string stageString;
     private Text stageText;
 
@@ -29,6 +30,8 @@ public class ContadorFacas : MonoBehaviour
     private Vidas vidasClass;
 
     private SFXManager sfx;
+    [HideInInspector] 
+    public ParticleSpawner particleSpawner;
 
     private void Start()
     {
@@ -53,6 +56,8 @@ public class ContadorFacas : MonoBehaviour
         vidasClass = FindObjectOfType<Vidas>();
 
         sfx = FindObjectOfType<SFXManager>();
+
+        particleSpawner = FindObjectOfType<ParticleSpawner>();
     }
     public void MenosUma()
     {

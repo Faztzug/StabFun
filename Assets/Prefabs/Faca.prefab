@@ -156,6 +156,9 @@ MonoBehaviour:
   destruirTorqueRange: {x: -200, y: 200}
   destruirApos: 0
   destruirTorque: 0
+  destruirForceRange: {x: -7, y: 7}
+  destruirForceX: 0
+  destruirForceY: 0
   dummyFaca: 0
 --- !u!1 &1753560630848080083
 GameObject:

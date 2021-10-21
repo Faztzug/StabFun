@@ -20,6 +20,9 @@ public class Faca : MonoBehaviour
     [SerializeField] protected Vector2 destruirTorqueRange = new Vector2(-1f, 1f);
     [SerializeField] protected float destruirApos;
     [SerializeField] protected float destruirTorque;
+    [SerializeField] protected Vector2 destruirForceRange = new Vector2(-6f, 6f);
+    [SerializeField] protected float destruirForceX;
+    [SerializeField] protected float destruirForceY;
 
     [HideInInspector] public bool dummyFaca = false;
 
@@ -33,6 +36,8 @@ public class Faca : MonoBehaviour
 
         destruirApos = Random.Range(destruirAposRange.x, destruirAposRange.y);
         destruirTorque = Random.Range(destruirTorqueRange.x, destruirTorqueRange.y);
+        destruirForceX = Random.Range(destruirForceRange.x, destruirForceRange.y);
+        destruirForceY = Random.Range(0, destruirForceRange.y);
 
         if (dummyFaca == true)
         {
@@ -75,6 +80,7 @@ public class Faca : MonoBehaviour
         facaBody.constraints = RigidbodyConstraints2D.None;
         facaBody.gravityScale = 1;
         facaBody.AddTorque(destruirTorque);
+        facaBody.AddForce(new Vector2(destruirForceX, destruirForceY), ForceMode2D.Impulse);
         Destroy(this.gameObject, destruirApos);
     }
 

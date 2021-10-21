@@ -36,6 +36,10 @@ public class RodaRodaGiraGira : MonoBehaviour
     //private AudioSource SFXfacaNaMadeira;
     [HideInInspector]
     public SFXManager sfx;
+
+    [SerializeField]
+    private Vector2 colorRange;
+    private SpriteRenderer sprite;
     
 
     private void Start()
@@ -60,6 +64,21 @@ public class RodaRodaGiraGira : MonoBehaviour
 
         //SFXfacaNaMadeira = GetComponent<AudioSource>();
         sfx = FindObjectOfType<SFXManager>();
+        sprite = GetComponent<SpriteRenderer>();
+        if(contadorFacas.stagePoints > 0)
+        MudarCor();
+    }
+
+    public void MudarCor()
+    {
+        Debug.Log("Cor original do Cepo: " + sprite.color);
+
+        GetComponent<SpriteRenderer>().color = 
+            new Color(Random.Range(colorRange.x,colorRange.y), 
+            Random.Range(colorRange.x, colorRange.y), 
+            Random.Range(colorRange.x, colorRange.y));
+
+        Debug.Log("Cepo Mudou cor para: " + sprite.color);
     }
 
     private void SpawnObjects()
@@ -180,6 +199,8 @@ public class RodaRodaGiraGira : MonoBehaviour
             {
                 //SFXfacaNaMadeira.Play();
                 sfx.facaNaMadeira.Play();
+                contadorFacas.particleSpawner.
+                    facaParticle(collision.transform);
                 
                 collision.gameObject.transform.SetParent(this.gameObject.transform);
                 collision.rigidbody.velocity = Vector2.zero;
@@ -199,6 +220,11 @@ public class RodaRodaGiraGira : MonoBehaviour
         foreach (Faca faca in GetComponentsInChildren<Faca>())
         {
             faca.LibertarEDestruir();
+        }
+
+        foreach (Fruta fruta in GetComponentsInChildren<Fruta>())
+        {
+            fruta.LibertarEDestruir();
         }
 
         /*int childLenght = transform.childCount;

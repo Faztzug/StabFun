@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6249854273864881437}
   - component: {fileID: 6249854273864881438}
   - component: {fileID: 6249854273864881435}
+  - component: {fileID: 5136005561397629807}
   m_Layer: 0
   m_Name: Fruta
   m_TagString: Fruta
@@ -96,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b754984ff2baf304c8658fef9d2f96d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destruirAposRange: {x: 3, y: 8}
+  destruirTorqueRange: {x: -200, y: 200}
 --- !u!58 &6249854273864881435
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -112,3 +115,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.06}
   serializedVersion: 2
   m_Radius: 0.33
+--- !u!50 &5136005561397629807
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6249854273864881439}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7

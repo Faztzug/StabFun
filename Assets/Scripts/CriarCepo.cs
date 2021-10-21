@@ -18,7 +18,8 @@ public class CriarCepo : MonoBehaviour
     {
         StartCoroutine(SpawnCepo(espera));
         //if (FindObjectOfType<GameOver>() == null)
-            
+        //FindObjectOfType<RodaRodaGiraGira>().MudarCor();
+
     }
 
     public IEnumerator SpawnCepo(float espera)
@@ -28,6 +29,7 @@ public class CriarCepo : MonoBehaviour
         yield return new WaitForSeconds(espera);
 
         Instantiate(cepoGO);
+        
         stopInput.gameObject.SetActive(false);
     }
 
