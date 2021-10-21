@@ -40,6 +40,8 @@ public class RodaRodaGiraGira : MonoBehaviour
     [SerializeField]
     private Vector2 colorRange;
     private SpriteRenderer sprite;
+
+    private Animator anim;
     
 
     private void Start()
@@ -67,6 +69,8 @@ public class RodaRodaGiraGira : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         if(contadorFacas.stagePoints > 0)
         MudarCor();
+
+        anim = GetComponent<Animator>();
     }
 
     public void MudarCor()
@@ -199,6 +203,7 @@ public class RodaRodaGiraGira : MonoBehaviour
             {
                 //SFXfacaNaMadeira.Play();
                 sfx.facaNaMadeira.Play();
+                anim.SetTrigger("Dano");
                 contadorFacas.particleSpawner.
                     facaParticle(collision.transform);
                 

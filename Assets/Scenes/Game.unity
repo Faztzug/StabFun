@@ -3059,6 +3059,10 @@ MonoBehaviour:
   frutaPYCorrection: 0
   facaP: {fileID: 7665999738825296408, guid: 563d50b6b95ad68449d984a212d831f7, type: 3}
   facaPYCorrection: -0.25
+  facaFacaP: {fileID: 1219712984032920, guid: f9f995b7b83c7df4b9c599e5ba6f307f, type: 3}
+  facaFacaPYCorrection: 0
+  cepoDestroyP: {fileID: 1312756255662086, guid: 159ac91ae3c40f64393f7a68a9a24d71, type: 3}
+  cepoDestroyPYCorrection: 0
 --- !u!4 &1879900986
 Transform:
   m_ObjectHideFlags: 0

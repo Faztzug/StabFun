@@ -86,7 +86,10 @@ public class ContadorFacas : MonoBehaviour
             GanharVida();
 
             //Destroy(FindObjectOfType<RodaRodaGiraGira>().gameObject);
-            FindObjectOfType<RodaRodaGiraGira>().DestruirCepo();
+            RodaRodaGiraGira cepo =
+            FindObjectOfType<RodaRodaGiraGira>();
+            cepo.DestruirCepo();
+            particleSpawner.cepoDestroyParticle(cepo.transform);
             
 
             foreach (FacaSlot faca in facas)

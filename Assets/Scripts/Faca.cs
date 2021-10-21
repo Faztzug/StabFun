@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Faca : MonoBehaviour
 {
@@ -30,7 +30,7 @@ public class Faca : MonoBehaviour
     {
         facaBody = GetComponent<Rigidbody2D>();
         caboBody = GetComponentInChildren<Rigidbody2D>();
-        if(dummyFaca == false) FindObjectOfType<AcharFaca>().faca = this;
+        if (dummyFaca == false) FindObjectOfType<AcharFaca>().faca = this;
         facaBox = GetComponent<BoxCollider2D>();
         caboBox = transform.GetChild(0).gameObject.GetComponent<BoxCollider2D>();
 
@@ -42,10 +42,8 @@ public class Faca : MonoBehaviour
         if (dummyFaca == true)
         {
             //facaBox.enabled = false;
-            if(transform.parent != null)
+            if (transform.parent != null)
             {
-                
-                    
             }
 
             facaBody.velocity = Vector2.zero;
@@ -55,7 +53,6 @@ public class Faca : MonoBehaviour
             presa = true;
             enabled = false;
         }
-            
     }
 
     protected void FixedUpdate()
@@ -86,11 +83,18 @@ public class Faca : MonoBehaviour
 
     protected void OnCollisionEnter2D(Collision2D collision)
     {
+        /*if (collision.gameObject.CompareTag("Faca"))
+        {
+            
+
+        }*/
+        //checagem se é a faca arremessada ao inves da presa
         if (presa == false && dummyFaca == false)
         {
             if (collision.gameObject.CompareTag("Faca"))
             {
                 FindObjectOfType<SFXManager>().facaNaFaca.Play();
+                FindObjectOfType<ParticleSpawner>().facaFacaParticle(this.transform);
                 hit = true;
                 Debug.Log(collision.gameObject);
 
