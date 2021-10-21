@@ -25,6 +25,10 @@ public class GameOver : MonoBehaviour
             gameObject.SetActive(false);
         }
         else
+        {
+            FindObjectOfType<SFXManager>().gameOver.Play();
             gameObject.SetActive(true);
+        }
+            
     }
 }

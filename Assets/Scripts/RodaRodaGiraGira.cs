@@ -29,9 +29,14 @@ public class RodaRodaGiraGira : MonoBehaviour
     [SerializeField] private float facaSpawnChance;
     [SerializeField] private int spawnSections = 12;
     private float grausSpawn;
-    private float grauAtual = 0;
+    //private float grauAtual = 0;
     [SerializeField] private Vector2 frutaSpawnPosition;
     [SerializeField] private Vector2 facaSpawnPosition;
+
+    //private AudioSource SFXfacaNaMadeira;
+    [HideInInspector]
+    public SFXManager sfx;
+    
 
     private void Start()
     {
@@ -52,6 +57,9 @@ public class RodaRodaGiraGira : MonoBehaviour
         {
             dFaca.Jogar();
         }*/
+
+        //SFXfacaNaMadeira = GetComponent<AudioSource>();
+        sfx = FindObjectOfType<SFXManager>();
     }
 
     private void SpawnObjects()
@@ -170,6 +178,9 @@ public class RodaRodaGiraGira : MonoBehaviour
             if (collision.gameObject.GetComponentInParent<Faca>().hit == false
                 && collision.gameObject.GetComponentInParent<Faca>().dummyFaca == false)
             {
+                //SFXfacaNaMadeira.Play();
+                sfx.facaNaMadeira.Play();
+                
                 collision.gameObject.transform.SetParent(this.gameObject.transform);
                 collision.rigidbody.velocity = Vector2.zero;
                 collision.rigidbody.angularVelocity = 0;

@@ -28,6 +28,8 @@ public class ContadorFacas : MonoBehaviour
     [SerializeField] private int acresentarPontosParaProximaVida = 100;
     private Vidas vidasClass;
 
+    private SFXManager sfx;
+
     private void Start()
     {
         facasTotal = transform.childCount;
@@ -49,6 +51,8 @@ public class ContadorFacas : MonoBehaviour
         MenosFacas(Random.Range(removerFacasRange.x, removerFacasRange.y));
 
         vidasClass = FindObjectOfType<Vidas>();
+
+        sfx = FindObjectOfType<SFXManager>();
     }
     public void MenosUma()
     {
@@ -122,6 +126,7 @@ public class ContadorFacas : MonoBehaviour
     {
         if(scorePoints >= pontosParaGanharVida)
         {
+            sfx.ganharVida.Play();
             pontosParaGanharVida += acresentarPontosParaProximaVida + pontosParaGanharVida;
             vidasClass.GanharVida();
         }

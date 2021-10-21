@@ -84,6 +84,7 @@ public class Faca : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Faca"))
             {
+                FindObjectOfType<SFXManager>().facaNaFaca.Play();
                 hit = true;
                 Debug.Log(collision.gameObject);
 
