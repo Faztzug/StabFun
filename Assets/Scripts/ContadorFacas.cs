@@ -86,6 +86,7 @@ public class ContadorFacas : MonoBehaviour
             GanharVida();
 
             //Destroy(FindObjectOfType<RodaRodaGiraGira>().gameObject);
+            //criarCepo.stopInput.gameObject.SetActive(true);
             RodaRodaGiraGira cepo =
             FindObjectOfType<RodaRodaGiraGira>();
             cepo.DestruirCepo();

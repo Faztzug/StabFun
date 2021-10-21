@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Faca : MonoBehaviour
 {
@@ -30,7 +31,9 @@ public class Faca : MonoBehaviour
     {
         facaBody = GetComponent<Rigidbody2D>();
         caboBody = GetComponentInChildren<Rigidbody2D>();
-        if (dummyFaca == false) FindObjectOfType<AcharFaca>().faca = this;
+        //
+        StartCoroutine(AcharFaca());
+
         facaBox = GetComponent<BoxCollider2D>();
         caboBox = transform.GetChild(0).gameObject.GetComponent<BoxCollider2D>();
 
@@ -67,6 +70,15 @@ public class Faca : MonoBehaviour
     public void Jogar()
     {
         facaBody.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+    }
+
+    public IEnumerator AcharFaca()
+    {
+        yield return new WaitForEndOfFrame();
+
+        if (dummyFaca == false) 
+            FindObjectOfType<AcharFaca>().faca = this;
+
     }
 
     public void LibertarEDestruir()
